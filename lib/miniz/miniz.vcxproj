@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}</ProjectGuid><ProjectName>miniz</ProjectName><RootNamespace>miniz</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>StaticLibrary</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\..\out\obj\$(Configuration)\miniz\</IntDir><TargetName>miniz</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir).;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;MINIZ_NO_ZLIB_COMPATIBLE_NAMES;MINIZ_NO_STDIO;MINIZ_NO_TIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="miniz.c"><ObjectFileName>$(IntDir)lib_miniz_miniz_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="miniz_tinfl.c"><ObjectFileName>$(IntDir)lib_miniz_miniz_tinfl_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="miniz_tdef.c"><ObjectFileName>$(IntDir)lib_miniz_miniz_tdef_c.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="miniz.h" />
+    <ClInclude Include="miniz_common.h" />
+    <ClInclude Include="miniz_export.h" />
+    <ClInclude Include="miniz_tdef.h" />
+    <ClInclude Include="miniz_tinfl.h" />
+    <ClInclude Include="miniz_zip.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

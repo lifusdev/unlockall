@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{350b5551-f12a-5f55-bb4e-bed7e461737f}</ProjectGuid><ProjectName>unlockall</ProjectName><RootNamespace>unlockall</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>Application</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)out\obj\$(Configuration)\unlockall\</IntDir><TargetName>unlockall</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)uwu;$(ProjectDir)assets\windows;$(ProjectDir)lib\zydis\include;$(ProjectDir)lib\zydis\dependencies\zycore\include;$(ProjectDir)lib\triton\include;$(ProjectDir)lib\capstone\include;$(ProjectDir)lib\imgui;$(ProjectDir)lib\imgui\backends;$(ProjectDir)lib\miniz;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;ZYDIS_STATIC_BUILD;ZYCORE_STATIC_BUILD;ZYDIS_DISABLE_ENCODER;IMGUI_DISABLE_DEMO_WINDOWS;IMGUI_DISABLE_DEBUG_TOOLS;MINIZ_NO_ZLIB_COMPATIBLE_NAMES;MINIZ_NO_STDIO;MINIZ_NO_TIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link><SubSystem>Windows</SubSystem><AdditionalDependencies>windowsapp.lib;crypt32.lib;iphlpapi.lib;ws2_32.lib;advapi32.lib;bcrypt.lib;shell32.lib;ole32.lib;psapi.lib;d3d11.lib;d3dcompiler.lib;dwmapi.lib;user32.lib;gdi32.lib;dxgi.lib;dcomp.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies><AdditionalOptions>/MANIFEST:NO %(AdditionalOptions)</AdditionalOptions></Link>
+    <ResourceCompile><AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)assets\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="uwu\lifus\unlockall\main.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_main_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\d3d.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_d3d_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\input.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_input_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\menu.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_menu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\overlay.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_overlay_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\target.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_target_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\gui\unlock.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_gui_unlock_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\log\keep.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_log_keep_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\log\log.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_log_log_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\log\sys.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_log_sys_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\log\zip.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_log_zip_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\emu.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_emu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\memory.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_memory_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\paths.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_paths_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\shadow.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_shadow_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\triton.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_triton_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\mem\branch.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_mem_branch_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\fault.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_fault_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\scan.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_scan_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\image.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_image_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\fields.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_fields_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\alias.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_alias_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\exit.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_exit_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\qb\registry.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_qb_registry_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\catalog.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_catalog_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\profile.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_profile_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\discover.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_discover_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\cache.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_cache_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\inventory.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_inventory_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\job.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_job_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\reconnect.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_reconnect_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\route.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_route_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\server.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_server_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="uwu\lifus\unlockall\unlock\update.cpp"><ObjectFileName>$(IntDir)uwu_lifus_unlockall_unlock_update_cpp.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="uwu\lifus\unlockall\gui\D3d.h" />
+    <ClInclude Include="uwu\lifus\unlockall\gui\Frame.h" />
+    <ClInclude Include="uwu\lifus\unlockall\gui\Overlay.h" />
+    <ClInclude Include="uwu\lifus\unlockall\gui\Style.h" />
+    <ClInclude Include="uwu\lifus\unlockall\gui\Ui.h" />
+    <ClInclude Include="uwu\lifus\unlockall\gui\Unlock.h" />
+    <ClInclude Include="uwu\lifus\unlockall\log\Internal.h" />
+    <ClInclude Include="uwu\lifus\unlockall\log\Log.h" />
+    <ClInclude Include="uwu\lifus\unlockall\log\Zip.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Emu.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Handle.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Memory.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Paths.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Shadow.h" />
+    <ClInclude Include="uwu\lifus\unlockall\mem\Triton.h" />
+    <ClInclude Include="uwu\lifus\unlockall\qb\Fault.h" />
+    <ClInclude Include="uwu\lifus\unlockall\qb\Scan.h" />
+    <ClInclude Include="uwu\lifus\unlockall\qb\Image.h" />
+    <ClInclude Include="uwu\lifus\unlockall\qb\Registry.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Catalog.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Profile.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Cfg.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Inventory.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Job.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Reconnect.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Route.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Server.h" />
+    <ClInclude Include="uwu\lifus\unlockall\unlock\Update.h" />
+    <ResourceCompile Include="assets\windows\unlockall.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="lib\zydis\zydis.vcxproj"><Project>{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}</Project></ProjectReference>
+    <ProjectReference Include="lib\miniz\miniz.vcxproj"><Project>{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}</Project></ProjectReference>
+    <ProjectReference Include="lib\imgui\imgui.vcxproj"><Project>{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}</Project></ProjectReference>
+    <ProjectReference Include="lib\triton\triton.vcxproj"><Project>{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}</Project></ProjectReference>
+    <ProjectReference Include="lib\capstone\capstone.vcxproj"><Project>{cfc61ea1-46d5-5121-a113-964c61285fd5}</Project></ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

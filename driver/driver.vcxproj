@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}</ProjectGuid>
+    <ProjectName>driver</ProjectName>
+    <RootNamespace>driver</RootNamespace>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <DriverKitVersion Condition="'$(DriverKitVersion)'==''">10.0.28000.0</DriverKitVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset>
+    <PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset>
+    <UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)'=='release'">false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)..\out\$(Configuration)\driver\</OutDir>
+    <IntDir>$(ProjectDir)..\out\obj\$(Configuration)\driver\</IntDir>
+    <TargetName>lifus</TargetName>
+    <TargetExt>.sys</TargetExt>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(WindowsSdkDir)Include\$(DriverKitVersion)\km\crt;$(WindowsSdkDir)Include\$(DriverKitVersion)\km;$(WindowsSdkDir)Include\$(DriverKitVersion)\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_AMD64_;AMD64;_WIN64;NTDDI_VERSION=0x0a000000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <AdditionalOptions>/kernel /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <LinkDLL>false</LinkDLL>
+      <AdditionalLibraryDirectories>$(WindowsSdkDir)Lib\$(DriverKitVersion)\km\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ntoskrnl.lib;hal.lib;wdmsec.lib;libcntpr.lib;BufferOverflowFastFailK.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <SubSystem>Native</SubSystem>
+      <EntryPointSymbol>GsDriverEntry</EntryPointSymbol>
+      <Driver>WDM</Driver>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+      <AdditionalOptions>/kernel /MANIFEST:NO %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="lifus.c" /><ClInclude Include="Driver.h" /><ResourceCompile Include="lifus.rc" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

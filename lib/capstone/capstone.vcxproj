@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{cfc61ea1-46d5-5121-a113-964c61285fd5}</ProjectGuid><ProjectName>capstone</ProjectName><RootNamespace>capstone</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>StaticLibrary</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\..\out\obj\$(Configuration)\capstone\</IntDir><TargetName>capstone</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir).;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;CAPSTONE_HAS_X86;CAPSTONE_USE_SYS_DYN_MEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="cs.c"><ObjectFileName>$(IntDir)lib_capstone_cs_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="mapping.c"><ObjectFileName>$(IntDir)lib_capstone_mapping_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="mcinst.c"><ObjectFileName>$(IntDir)lib_capstone_mcinst_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="mcinstrdesc.c"><ObjectFileName>$(IntDir)lib_capstone_mcinstrdesc_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="mcregisterinfo.c"><ObjectFileName>$(IntDir)lib_capstone_mcregisterinfo_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="sstream.c"><ObjectFileName>$(IntDir)lib_capstone_sstream_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="utils.c"><ObjectFileName>$(IntDir)lib_capstone_utils_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86attinstprinter.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86attinstprinter_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86disassembler.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86disassembler_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86disassemblerdecoder.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86disassemblerdecoder_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86instprintercommon.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86instprintercommon_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86intelinstprinter.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86intelinstprinter_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86mapping.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86mapping_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="arch\X86\x86module.c"><ObjectFileName>$(IntDir)lib_capstone_arch_X86_x86module_c.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arch\X86\X86BaseInfo.h" />
+    <ClInclude Include="arch\X86\X86Disassembler.h" />
+    <ClInclude Include="arch\X86\X86DisassemblerDecoder.h" />
+    <ClInclude Include="arch\X86\X86DisassemblerDecoderCommon.h" />
+    <ClInclude Include="arch\X86\X86GenAsmWriter.inc" />
+    <ClInclude Include="arch\X86\X86GenAsmWriter1.inc" />
+    <ClInclude Include="arch\X86\X86GenAsmWriter1_reduce.inc" />
+    <ClInclude Include="arch\X86\X86GenAsmWriter_reduce.inc" />
+    <ClInclude Include="arch\X86\X86GenDisassemblerTables.inc" />
+    <ClInclude Include="arch\X86\X86GenDisassemblerTables2.inc" />
+    <ClInclude Include="arch\X86\X86GenDisassemblerTables_reduce.inc" />
+    <ClInclude Include="arch\X86\X86GenDisassemblerTables_reduce2.inc" />
+    <ClInclude Include="arch\X86\X86GenInstrInfo.inc" />
+    <ClInclude Include="arch\X86\X86GenInstrInfo_reduce.inc" />
+    <ClInclude Include="arch\X86\X86GenRegisterInfo.inc" />
+    <ClInclude Include="arch\X86\X86GenRegisterName.inc" />
+    <ClInclude Include="arch\X86\X86GenRegisterName1.inc" />
+    <ClInclude Include="arch\X86\X86ImmSize.inc" />
+    <ClInclude Include="arch\X86\X86InstPrinter.h" />
+    <ClInclude Include="arch\X86\X86InstPrinterCommon.h" />
+    <ClInclude Include="arch\X86\X86Lookup16.inc" />
+    <ClInclude Include="arch\X86\X86Lookup16_reduce.inc" />
+    <ClInclude Include="arch\X86\X86Mapping.h" />
+    <ClInclude Include="arch\X86\X86MappingInsn.inc" />
+    <ClInclude Include="arch\X86\X86MappingInsn_reduce.inc" />
+    <ClInclude Include="arch\X86\X86MappingInsnName.inc" />
+    <ClInclude Include="arch\X86\X86MappingInsnName_reduce.inc" />
+    <ClInclude Include="arch\X86\X86MappingInsnOp.inc" />
+    <ClInclude Include="arch\X86\X86MappingInsnOp_reduce.inc" />
+    <ClInclude Include="arch\X86\X86MappingReg.inc" />
+    <ClInclude Include="arch\X86\X86Module.h" />
+    <ClInclude Include="cs_priv.h" />
+    <ClInclude Include="cs_simple_types.h" />
+    <ClInclude Include="include\capstone\arm.h" />
+    <ClInclude Include="include\capstone\arm64.h" />
+    <ClInclude Include="include\capstone\bpf.h" />
+    <ClInclude Include="include\capstone\capstone.h" />
+    <ClInclude Include="include\capstone\evm.h" />
+    <ClInclude Include="include\capstone\m680x.h" />
+    <ClInclude Include="include\capstone\m68k.h" />
+    <ClInclude Include="include\capstone\mips.h" />
+    <ClInclude Include="include\capstone\mos65xx.h" />
+    <ClInclude Include="include\capstone\platform.h" />
+    <ClInclude Include="include\capstone\ppc.h" />
+    <ClInclude Include="include\capstone\riscv.h" />
+    <ClInclude Include="include\capstone\sh.h" />
+    <ClInclude Include="include\capstone\sparc.h" />
+    <ClInclude Include="include\capstone\systemz.h" />
+    <ClInclude Include="include\capstone\tms320c64x.h" />
+    <ClInclude Include="include\capstone\tricore.h" />
+    <ClInclude Include="include\capstone\wasm.h" />
+    <ClInclude Include="include\capstone\x86.h" />
+    <ClInclude Include="include\capstone\xcore.h" />
+    <ClInclude Include="include\platform.h" />
+    <ClInclude Include="include\windowsce\intrin.h" />
+    <ClInclude Include="include\windowsce\stdint.h" />
+    <ClInclude Include="LEB128.h" />
+    <ClInclude Include="Mapping.h" />
+    <ClInclude Include="MathExtras.h" />
+    <ClInclude Include="MCDisassembler.h" />
+    <ClInclude Include="MCFixedLenDisassembler.h" />
+    <ClInclude Include="MCInst.h" />
+    <ClInclude Include="MCInstrDesc.h" />
+    <ClInclude Include="MCRegisterInfo.h" />
+    <ClInclude Include="SStream.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

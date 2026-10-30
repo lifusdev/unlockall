@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lib"><UniqueIdentifier>{1ccb3c61-5279-592e-868b-15887eeb13e6}</UniqueIdentifier></Filter>
+    <Filter Include="lib\imgui"><UniqueIdentifier>{06e6cee7-2163-554e-9fa7-75458cc6f85d}</UniqueIdentifier></Filter>
+    <Filter Include="lib\imgui\backends"><UniqueIdentifier>{42f30ea4-6ade-5c44-8a7a-adf820f4921a}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="imgui.cpp"><Filter>lib\imgui</Filter></ClCompile>
+    <ClCompile Include="imgui_draw.cpp"><Filter>lib\imgui</Filter></ClCompile>
+    <ClCompile Include="imgui_tables.cpp"><Filter>lib\imgui</Filter></ClCompile>
+    <ClCompile Include="imgui_widgets.cpp"><Filter>lib\imgui</Filter></ClCompile>
+    <ClCompile Include="backends\imgui_impl_dx11.cpp"><Filter>lib\imgui\backends</Filter></ClCompile>
+    <ClCompile Include="backends\imgui_impl_win32.cpp"><Filter>lib\imgui\backends</Filter></ClCompile>
+    <ClInclude Include="backends\imgui_impl_dx11.h"><Filter>lib\imgui\backends</Filter></ClInclude>
+    <ClInclude Include="backends\imgui_impl_win32.h"><Filter>lib\imgui\backends</Filter></ClInclude>
+    <ClInclude Include="imconfig.h"><Filter>lib\imgui</Filter></ClInclude>
+    <ClInclude Include="imgui.h"><Filter>lib\imgui</Filter></ClInclude>
+    <ClInclude Include="imgui_internal.h"><Filter>lib\imgui</Filter></ClInclude>
+    <ClInclude Include="imstb_rectpack.h"><Filter>lib\imgui</Filter></ClInclude>
+    <ClInclude Include="imstb_textedit.h"><Filter>lib\imgui</Filter></ClInclude>
+    <ClInclude Include="imstb_truetype.h"><Filter>lib\imgui</Filter></ClInclude>
+  </ItemGroup>
+</Project>

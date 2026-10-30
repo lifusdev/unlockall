@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}</ProjectGuid><ProjectName>imgui</ProjectName><RootNamespace>imgui</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>StaticLibrary</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\..\out\obj\$(Configuration)\imgui\</IntDir><TargetName>imgui</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir).;$(ProjectDir)backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;IMGUI_DISABLE_DEMO_WINDOWS;IMGUI_DISABLE_DEBUG_TOOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="imgui.cpp"><ObjectFileName>$(IntDir)lib_imgui_imgui_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="imgui_draw.cpp"><ObjectFileName>$(IntDir)lib_imgui_imgui_draw_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="imgui_tables.cpp"><ObjectFileName>$(IntDir)lib_imgui_imgui_tables_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="imgui_widgets.cpp"><ObjectFileName>$(IntDir)lib_imgui_imgui_widgets_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="backends\imgui_impl_dx11.cpp"><ObjectFileName>$(IntDir)lib_imgui_backends_imgui_impl_dx11_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="backends\imgui_impl_win32.cpp"><ObjectFileName>$(IntDir)lib_imgui_backends_imgui_impl_win32_cpp.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="backends\imgui_impl_dx11.h" />
+    <ClInclude Include="backends\imgui_impl_win32.h" />
+    <ClInclude Include="imconfig.h" />
+    <ClInclude Include="imgui.h" />
+    <ClInclude Include="imgui_internal.h" />
+    <ClInclude Include="imstb_rectpack.h" />
+    <ClInclude Include="imstb_textedit.h" />
+    <ClInclude Include="imstb_truetype.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

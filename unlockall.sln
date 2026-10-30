@@ -1,0 +1,53 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+VisualStudioVersion = 17.0.0.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "unlockall", "unlockall.vcxproj", "{350b5551-f12a-5f55-bb4e-bed7e461737f}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "zydis", "lib\zydis\zydis.vcxproj", "{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "miniz", "lib\miniz\miniz.vcxproj", "{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "imgui", "lib\imgui\imgui.vcxproj", "{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "triton", "lib\triton\triton.vcxproj", "{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "capstone", "lib\capstone\capstone.vcxproj", "{cfc61ea1-46d5-5121-a113-964c61285fd5}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "driver", "driver\driver.vcxproj", "{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		debug|x64 = debug|x64
+		release|x64 = release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}.debug|x64.ActiveCfg = debug|x64
+		{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}.debug|x64.Build.0 = debug|x64
+		{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}.release|x64.ActiveCfg = release|x64
+		{6fb05bdc-10a0-47b7-972b-1ee40629aa5f}.release|x64.Build.0 = release|x64
+		{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}.debug|x64.ActiveCfg = debug|x64
+		{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}.debug|x64.Build.0 = debug|x64
+		{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}.release|x64.ActiveCfg = release|x64
+		{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}.release|x64.Build.0 = release|x64
+		{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}.debug|x64.ActiveCfg = debug|x64
+		{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}.debug|x64.Build.0 = debug|x64
+		{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}.release|x64.ActiveCfg = release|x64
+		{fdd749de-7c0f-526e-a2c6-2903b6fa6da6}.release|x64.Build.0 = release|x64
+		{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}.debug|x64.ActiveCfg = debug|x64
+		{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}.debug|x64.Build.0 = debug|x64
+		{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}.release|x64.ActiveCfg = release|x64
+		{323e88fa-c67c-55c1-aaa5-c969b9e40b8e}.release|x64.Build.0 = release|x64
+		{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}.debug|x64.ActiveCfg = debug|x64
+		{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}.debug|x64.Build.0 = debug|x64
+		{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}.release|x64.ActiveCfg = release|x64
+		{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}.release|x64.Build.0 = release|x64
+		{cfc61ea1-46d5-5121-a113-964c61285fd5}.debug|x64.ActiveCfg = debug|x64
+		{cfc61ea1-46d5-5121-a113-964c61285fd5}.debug|x64.Build.0 = debug|x64
+		{cfc61ea1-46d5-5121-a113-964c61285fd5}.release|x64.ActiveCfg = release|x64
+		{cfc61ea1-46d5-5121-a113-964c61285fd5}.release|x64.Build.0 = release|x64
+		{350b5551-f12a-5f55-bb4e-bed7e461737f}.debug|x64.ActiveCfg = debug|x64
+		{350b5551-f12a-5f55-bb4e-bed7e461737f}.debug|x64.Build.0 = debug|x64
+		{350b5551-f12a-5f55-bb4e-bed7e461737f}.release|x64.ActiveCfg = release|x64
+		{350b5551-f12a-5f55-bb4e-bed7e461737f}.release|x64.Build.0 = release|x64
+	EndGlobalSection
+EndGlobal

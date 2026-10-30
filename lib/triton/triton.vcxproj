@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{d2d4b4f6-f2e1-541b-b2a5-e37b3fcb00ae}</ProjectGuid><ProjectName>triton</ProjectName><RootNamespace>triton</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>StaticLibrary</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\..\out\obj\$(Configuration)\triton\</IntDir><TargetName>triton</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)..\capstone\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;LITTLE_ENDIAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\arch\architecture.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_architecture_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\aarch64\aarch64cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_aarch64_aarch64cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\aarch64\aarch64semantics.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_aarch64_aarch64semantics_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\aarch64\aarch64specifications.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_aarch64_aarch64specifications_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\arm32\arm32cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_arm32_arm32cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\arm32\arm32semantics.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_arm32_arm32semantics_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\arm32\arm32specifications.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_arm32_arm32specifications_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\arm\armoperandproperties.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_arm_armoperandproperties_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\basicblock.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_basicblock_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\bitsvector.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_bitsvector_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\immediate.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_immediate_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\instruction.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_instruction_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\irbuilder.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_irbuilder_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\memoryaccess.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_memoryaccess_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\operandwrapper.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_operandwrapper_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\register.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_register_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\riscv\riscv32cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_riscv_riscv32cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\riscv\riscv64cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_riscv_riscv64cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\riscv\riscvsemantics.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_riscv_riscvsemantics_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\riscv\riscvspecifications.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_riscv_riscvspecifications_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\x86\x8664cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_x86_x8664cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\x86\x86cpu.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_x86_x86cpu_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\x86\x86semantics.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_x86_x86semantics_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\arch\x86\x86specifications.cpp"><ObjectFileName>$(IntDir)lib_triton_src_arch_x86_x86specifications_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\ast.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_ast_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\astcontext.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_astcontext_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\representations\astpcoderepresentation.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_representations_astpcoderepresentation_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\representations\astpythonrepresentation.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_representations_astpythonrepresentation_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\representations\astrepresentation.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_representations_astrepresentation_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\ast\representations\astsmtrepresentation.cpp"><ObjectFileName>$(IntDir)lib_triton_src_ast_representations_astsmtrepresentation_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\callbacks\callbacks.cpp"><ObjectFileName>$(IntDir)lib_triton_src_callbacks_callbacks_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\context\context.cpp"><ObjectFileName>$(IntDir)lib_triton_src_context_context_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\lifters\liftingtodot.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_lifters_liftingtodot_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\lifters\liftingtopython.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_lifters_liftingtopython_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\lifters\liftingtosmt.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_lifters_liftingtosmt_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\solver\solverengine.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_solver_solverengine_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\solver\solvermodel.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_solver_solvermodel_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\pathconstraint.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_pathconstraint_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\pathmanager.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_pathmanager_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\symbolicengine.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_symbolicengine_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\symbolicexpression.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_symbolicexpression_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\symbolicsimplification.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_symbolicsimplification_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\symbolic\symbolicvariable.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_symbolic_symbolicvariable_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\synthesis\oracletable.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_synthesis_oracletable_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\synthesis\synthesisresult.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_synthesis_synthesisresult_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\synthesis\synthesizer.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_synthesis_synthesizer_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\engines\taint\taintengine.cpp"><ObjectFileName>$(IntDir)lib_triton_src_engines_taint_taintengine_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\modes\modes.cpp"><ObjectFileName>$(IntDir)lib_triton_src_modes_modes_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\stubs\aarch64-libc.cpp"><ObjectFileName>$(IntDir)lib_triton_src_stubs_aarch64-libc_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\stubs\i386-systemv-libc.cpp"><ObjectFileName>$(IntDir)lib_triton_src_stubs_i386-systemv-libc_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\stubs\x8664-ms-libc.cpp"><ObjectFileName>$(IntDir)lib_triton_src_stubs_x8664-ms-libc_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\stubs\x8664-systemv-libc.cpp"><ObjectFileName>$(IntDir)lib_triton_src_stubs_x8664-systemv-libc_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\utils\coreutils.cpp"><ObjectFileName>$(IntDir)lib_triton_src_utils_coreutils_cpp.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\utils\softfloat.cpp"><ObjectFileName>$(IntDir)lib_triton_src_utils_softfloat_cpp.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\triton\aarch64.spec" />
+    <ClInclude Include="include\triton\aarch64Cpu.hpp" />
+    <ClInclude Include="include\triton\aarch64Semantics.hpp" />
+    <ClInclude Include="include\triton\aarch64Specifications.hpp" />
+    <ClInclude Include="include\triton\archEnums.hpp" />
+    <ClInclude Include="include\triton\architecture.hpp" />
+    <ClInclude Include="include\triton\arm32.spec" />
+    <ClInclude Include="include\triton\arm32Cpu.hpp" />
+    <ClInclude Include="include\triton\arm32Semantics.hpp" />
+    <ClInclude Include="include\triton\arm32Specifications.hpp" />
+    <ClInclude Include="include\triton\armOperandProperties.hpp" />
+    <ClInclude Include="include\triton\ast.hpp" />
+    <ClInclude Include="include\triton\astContext.hpp" />
+    <ClInclude Include="include\triton\astEnums.hpp" />
+    <ClInclude Include="include\triton\astPcodeRepresentation.hpp" />
+    <ClInclude Include="include\triton\astPythonRepresentation.hpp" />
+    <ClInclude Include="include\triton\astRepresentation.hpp" />
+    <ClInclude Include="include\triton\astRepresentationInterface.hpp" />
+    <ClInclude Include="include\triton\astSmtRepresentation.hpp" />
+    <ClInclude Include="include\triton\basicBlock.hpp" />
+    <ClInclude Include="include\triton\bitsVector.hpp" />
+    <ClInclude Include="include\triton\bitwuzlaSolver.hpp" />
+    <ClInclude Include="include\triton\callbacks.hpp" />
+    <ClInclude Include="include\triton\callbacksEnums.hpp" />
+    <ClInclude Include="include\triton\comparableFunctor.hpp" />
+    <ClInclude Include="include\triton\config.hpp" />
+    <ClInclude Include="include\triton\context.hpp" />
+    <ClInclude Include="include\triton\coreUtils.hpp" />
+    <ClInclude Include="include\triton\cpuInterface.hpp" />
+    <ClInclude Include="include\triton\cpuSize.hpp" />
+    <ClInclude Include="include\triton\dllexport.hpp" />
+    <ClInclude Include="include\triton\exceptions.hpp" />
+    <ClInclude Include="include\triton\externalLibs.hpp" />
+    <ClInclude Include="include\triton\immediate.hpp" />
+    <ClInclude Include="include\triton\instruction.hpp" />
+    <ClInclude Include="include\triton\irBuilder.hpp" />
+    <ClInclude Include="include\triton\liftingEngine.hpp" />
+    <ClInclude Include="include\triton\liftingToDot.hpp" />
+    <ClInclude Include="include\triton\liftingToLLVM.hpp" />
+    <ClInclude Include="include\triton\liftingToPython.hpp" />
+    <ClInclude Include="include\triton\liftingToSMT.hpp" />
+    <ClInclude Include="include\triton\llvmToTriton.hpp" />
+    <ClInclude Include="include\triton\memoryAccess.hpp" />
+    <ClInclude Include="include\triton\modes.hpp" />
+    <ClInclude Include="include\triton\modesEnums.hpp" />
+    <ClInclude Include="include\triton\operandWrapper.hpp" />
+    <ClInclude Include="include\triton\oracleEntry.hpp" />
+    <ClInclude Include="include\triton\pathConstraint.hpp" />
+    <ClInclude Include="include\triton\pathManager.hpp" />
+    <ClInclude Include="include\triton\register.hpp" />
+    <ClInclude Include="include\triton\riscv32.spec" />
+    <ClInclude Include="include\triton\riscv32Cpu.hpp" />
+    <ClInclude Include="include\triton\riscv64.spec" />
+    <ClInclude Include="include\triton\riscv64Cpu.hpp" />
+    <ClInclude Include="include\triton\riscvSemantics.hpp" />
+    <ClInclude Include="include\triton\riscvSpecifications.hpp" />
+    <ClInclude Include="include\triton\semanticsInterface.hpp" />
+    <ClInclude Include="include\triton\shortcutRegister.hpp" />
+    <ClInclude Include="include\triton\softfloat.hpp" />
+    <ClInclude Include="include\triton\solverEngine.hpp" />
+    <ClInclude Include="include\triton\solverEnums.hpp" />
+    <ClInclude Include="include\triton\solverInterface.hpp" />
+    <ClInclude Include="include\triton\solverModel.hpp" />
+    <ClInclude Include="include\triton\stubs.hpp" />
+    <ClInclude Include="include\triton\symbolicEngine.hpp" />
+    <ClInclude Include="include\triton\symbolicEnums.hpp" />
+    <ClInclude Include="include\triton\symbolicExpression.hpp" />
+    <ClInclude Include="include\triton\symbolicSimplification.hpp" />
+    <ClInclude Include="include\triton\symbolicVariable.hpp" />
+    <ClInclude Include="include\triton\synthesisResult.hpp" />
+    <ClInclude Include="include\triton\synthesizer.hpp" />
+    <ClInclude Include="include\triton\taintEngine.hpp" />
+    <ClInclude Include="include\triton\tritonToBitwuzla.hpp" />
+    <ClInclude Include="include\triton\tritonToLLVM.hpp" />
+    <ClInclude Include="include\triton\tritonToZ3.hpp" />
+    <ClInclude Include="include\triton\tritonTypes.hpp" />
+    <ClInclude Include="include\triton\uintwide_t.h" />
+    <ClInclude Include="include\triton\version.hpp" />
+    <ClInclude Include="include\triton\x86.spec" />
+    <ClInclude Include="include\triton\x8664Cpu.hpp" />
+    <ClInclude Include="include\triton\x86Cpu.hpp" />
+    <ClInclude Include="include\triton\x86Semantics.hpp" />
+    <ClInclude Include="include\triton\x86Specifications.hpp" />
+    <ClInclude Include="include\triton\z3Solver.hpp" />
+    <ClInclude Include="include\triton\z3ToTriton.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\capstone\capstone.vcxproj"><Project>{cfc61ea1-46d5-5121-a113-964c61285fd5}</Project></ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

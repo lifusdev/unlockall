@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64"><Configuration>debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64"><Configuration>release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{7b11b287-e8b7-51c1-8f4b-1a03860b79ab}</ProjectGuid><ProjectName>zydis</ProjectName><RootNamespace>zydis</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><PlatformToolset Condition="Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v145</PlatformToolset><PlatformToolset Condition="!Exists('$(VCTargetsPath)Platforms\x64\PlatformToolsets\v145\Toolset.props')">v143</PlatformToolset><ConfigurationType>StaticLibrary</ConfigurationType><CharacterSet>Unicode</CharacterSet><UseDebugLibraries Condition="'$(Configuration)'=='debug'">true</UseDebugLibraries></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\out\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\..\out\obj\$(Configuration)\zydis\</IntDir><TargetName>zydis</TargetName><LinkIncremental>false</LinkIncremental><GenerateManifest>false</GenerateManifest></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(ProjectDir)dependencies\zycore\include;$(ProjectDir)dependencies\zycore\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_WIN32_WINNT=0x0a00;_CRT_SECURE_NO_WARNINGS;ZYDIS_STATIC_BUILD;ZYCORE_STATIC_BUILD;ZYDIS_DISABLE_ENCODER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard><LanguageStandard_C>stdc11</LanguageStandard_C><ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary Condition="'$(Configuration)'=='release'">MultiThreaded</RuntimeLibrary><RuntimeLibrary Condition="'$(Configuration)'=='debug'">MultiThreadedDebug</RuntimeLibrary>
+      <Optimization Condition="'$(Configuration)'=='release'">MaxSpeed</Optimization><Optimization Condition="'$(Configuration)'=='debug'">Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4201;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/utf-8 /bigobj /MP4 /diagnostics:column %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\decoder.c"><ObjectFileName>$(IntDir)lib_zydis_src_decoder_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\decoderdata.c"><ObjectFileName>$(IntDir)lib_zydis_src_decoderdata_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\disassembler.c"><ObjectFileName>$(IntDir)lib_zydis_src_disassembler_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\encoder.c"><ObjectFileName>$(IntDir)lib_zydis_src_encoder_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\encoderdata.c"><ObjectFileName>$(IntDir)lib_zydis_src_encoderdata_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\formatter.c"><ObjectFileName>$(IntDir)lib_zydis_src_formatter_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\formatteratt.c"><ObjectFileName>$(IntDir)lib_zydis_src_formatteratt_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\formatterbase.c"><ObjectFileName>$(IntDir)lib_zydis_src_formatterbase_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\formatterbuffer.c"><ObjectFileName>$(IntDir)lib_zydis_src_formatterbuffer_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\formatterintel.c"><ObjectFileName>$(IntDir)lib_zydis_src_formatterintel_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\metainfo.c"><ObjectFileName>$(IntDir)lib_zydis_src_metainfo_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\mnemonic.c"><ObjectFileName>$(IntDir)lib_zydis_src_mnemonic_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\register.c"><ObjectFileName>$(IntDir)lib_zydis_src_register_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\segment.c"><ObjectFileName>$(IntDir)lib_zydis_src_segment_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\shareddata.c"><ObjectFileName>$(IntDir)lib_zydis_src_shareddata_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\string.c"><ObjectFileName>$(IntDir)lib_zydis_src_string_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\utils.c"><ObjectFileName>$(IntDir)lib_zydis_src_utils_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="src\zydis.c"><ObjectFileName>$(IntDir)lib_zydis_src_zydis_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\allocator.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_allocator_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\argparse.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_argparse_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\bitset.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_bitset_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\format.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_format_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\list.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_list_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\string.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_string_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\vector.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_vector_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\zycore.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_zycore_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\API\memory.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_API_memory_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\API\process.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_API_process_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\API\synchronization.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_API_synchronization_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\API\terminal.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_API_terminal_c.obj</ObjectFileName></ClCompile>
+    <ClCompile Include="dependencies\zycore\src\API\thread.c"><ObjectFileName>$(IntDir)lib_zydis_dependencies_zycore_src_API_thread_c.obj</ObjectFileName></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dependencies\zycore\include\Zycore\Allocator.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\API\Memory.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\API\Process.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\API\Synchronization.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\API\Terminal.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\API\Thread.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\ArgParse.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Atomic.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Bitset.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Comparison.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Defines.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Format.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Internal\AtomicGNU.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Internal\AtomicMSVC.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\LibC.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\List.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Object.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Status.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\String.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Types.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Vector.h" />
+    <ClInclude Include="dependencies\zycore\include\Zycore\Zycore.h" />
+    <ClInclude Include="include\Zydis\Decoder.h" />
+    <ClInclude Include="include\Zydis\DecoderTypes.h" />
+    <ClInclude Include="include\Zydis\Defines.h" />
+    <ClInclude Include="include\Zydis\Disassembler.h" />
+    <ClInclude Include="include\Zydis\Encoder.h" />
+    <ClInclude Include="include\Zydis\Formatter.h" />
+    <ClInclude Include="include\Zydis\FormatterBuffer.h" />
+    <ClInclude Include="include\Zydis\Generated\EnumInstructionCategory.h" />
+    <ClInclude Include="include\Zydis\Generated\EnumISAExt.h" />
+    <ClInclude Include="include\Zydis\Generated\EnumISASet.h" />
+    <ClInclude Include="include\Zydis\Generated\EnumMnemonic.h" />
+    <ClInclude Include="include\Zydis\Generated\EnumRegister.h" />
+    <ClInclude Include="include\Zydis\Internal\DecoderData.h" />
+    <ClInclude Include="include\Zydis\Internal\EncoderData.h" />
+    <ClInclude Include="include\Zydis\Internal\FormatterATT.h" />
+    <ClInclude Include="include\Zydis\Internal\FormatterBase.h" />
+    <ClInclude Include="include\Zydis\Internal\FormatterIntel.h" />
+    <ClInclude Include="include\Zydis\Internal\SharedData.h" />
+    <ClInclude Include="include\Zydis\Internal\String.h" />
+    <ClInclude Include="include\Zydis\MetaInfo.h" />
+    <ClInclude Include="include\Zydis\Mnemonic.h" />
+    <ClInclude Include="include\Zydis\Register.h" />
+    <ClInclude Include="include\Zydis\Segment.h" />
+    <ClInclude Include="include\Zydis\SharedTypes.h" />
+    <ClInclude Include="include\Zydis\ShortString.h" />
+    <ClInclude Include="include\Zydis\Status.h" />
+    <ClInclude Include="include\Zydis\Utils.h" />
+    <ClInclude Include="include\Zydis\Zydis.h" />
+    <ClInclude Include="src\Generated\AccessedFlags.inc" />
+    <ClInclude Include="src\Generated\DecoderTables.inc" />
+    <ClInclude Include="src\Generated\EncoderTables.inc" />
+    <ClInclude Include="src\Generated\EnumInstructionCategory.inc" />
+    <ClInclude Include="src\Generated\EnumISAExt.inc" />
+    <ClInclude Include="src\Generated\EnumISASet.inc" />
+    <ClInclude Include="src\Generated\EnumMnemonic.inc" />
+    <ClInclude Include="src\Generated\EnumRegister.inc" />
+    <ClInclude Include="src\Generated\FormatterStrings.inc" />
+    <ClInclude Include="src\Generated\GetRelInfo.inc" />
+    <ClInclude Include="src\Generated\InstructionDefinitions.inc" />
+    <ClInclude Include="src\Generated\InstructionEncodings.inc" />
+    <ClInclude Include="src\Generated\OperandDefinitions.inc" />
+    <ClInclude Include="src\Generated\RegisterClassLookup.inc" />
+    <ClInclude Include="src\Generated\RegisterLookup.inc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

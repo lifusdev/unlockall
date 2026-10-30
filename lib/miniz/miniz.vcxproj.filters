@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lib"><UniqueIdentifier>{b25149c7-4df2-55f8-8873-98c034e9a7a9}</UniqueIdentifier></Filter>
+    <Filter Include="lib\miniz"><UniqueIdentifier>{6bb63478-d6e1-542e-93c2-b64975a3dbac}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="miniz.c"><Filter>lib\miniz</Filter></ClCompile>
+    <ClCompile Include="miniz_tinfl.c"><Filter>lib\miniz</Filter></ClCompile>
+    <ClCompile Include="miniz_tdef.c"><Filter>lib\miniz</Filter></ClCompile>
+    <ClInclude Include="miniz.h"><Filter>lib\miniz</Filter></ClInclude>
+    <ClInclude Include="miniz_common.h"><Filter>lib\miniz</Filter></ClInclude>
+    <ClInclude Include="miniz_export.h"><Filter>lib\miniz</Filter></ClInclude>
+    <ClInclude Include="miniz_tdef.h"><Filter>lib\miniz</Filter></ClInclude>
+    <ClInclude Include="miniz_tinfl.h"><Filter>lib\miniz</Filter></ClInclude>
+    <ClInclude Include="miniz_zip.h"><Filter>lib\miniz</Filter></ClInclude>
+  </ItemGroup>
+</Project>
